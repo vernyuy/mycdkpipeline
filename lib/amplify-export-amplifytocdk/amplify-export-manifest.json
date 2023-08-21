@@ -1,0 +1,38 @@
+{
+  "stackName": "amplify-amplifytocdk-dev-84219",
+  "props": {
+    "templateFile": "root-stack-template.json",
+    "parameters": {
+      "AuthRoleName": "amplify-amplifytocdk-dev-84219-authRole",
+      "UnauthRoleName": "amplify-amplifytocdk-dev-84219-unauthRole",
+      "DeploymentBucketName": "amplify-amplifytocdk-dev-84219-deployment"
+    },
+    "preserveLogicalIds": true,
+    "loadNestedStacks": {
+      "apiamplifytocdk": {
+        "templateFile": "api/amplifytocdk/cloudformation-template.json",
+        "parameters": {
+          "AppSyncApiName": "amplifytocdk",
+          "DynamoDBBillingMode": "PAY_PER_REQUEST",
+          "DynamoDBEnableServerSideEncryption": false,
+          "S3DeploymentBucket": "amplify-amplifytocdk-dev-84219-deployment",
+          "S3DeploymentRootKey": "amplify-appsync-files/8f9410f841c2559b250ad8f98f5b75e284f9aa2a",
+          "env": "dev"
+        },
+        "preserveLogicalIds": true,
+        "loadNestedStacks": {
+          "CustomResourcesjson": {
+            "templateFile": "api/amplifytocdk/amplify-appsync-files/stacks/CustomResources.json",
+            "preserveLogicalIds": true,
+            "loadNestedStacks": {}
+          },
+          "Todo": {
+            "templateFile": "api/amplifytocdk/amplify-appsync-files/stacks/Todo.json",
+            "preserveLogicalIds": true,
+            "loadNestedStacks": {}
+          }
+        }
+      }
+    }
+  }
+}
